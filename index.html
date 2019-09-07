@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/stylesheet/main.css">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Check your G.K</h1>
+    <form id="quiz" name="quiz">
+        <p class="ques">What is the Capital of Egypt?</p>
+        <input id="textbox" type="text" name="question1">
+
+        <p class="ques" >What is value of pi?</p>
+        <input type="radio" id="mc" name="question2" value="3.11">3.11<br>
+        <input type="radio" id="mc" name="question2" value="3.14">3.14<br>
+
+        <p class="ques" > When NASA had launched its first mission to Sun?
+        </p>
+        <input type="radio" id="mc" name="question3" value="2016">2016<br>
+        <input type="radio" id="mc" name="question3" value="2018">2018<br><br>
+
+        <input type="button" id="button" value="Submit" onclick="check();">
+        <input type="button" id="button" value="Next" onclick="next();">
+    </form>
+
+        <div id="after-submit">
+            <p id="num-correct"></p>
+            <p id="message"></p>
+            <img id="pic">
+        </div>
+    
+    <script>
+    function check() {
+        var question1=document.quiz.question1.value;
+        var question2=document.quiz.question2.value;
+        var question3=document.quiz.question3.value;
+        var correct=0;
+        if(question1=="Cairo") {
+            correct++;
+        }
+        if(question2=="3.14") {
+            correct++;
+        }
+        if(question3=="2018") {
+            correct++;
+        }
+    
+    var pic=["image/tenor.gif","image/01.gif","image/lose.gif"];
+    var message=["Great job!!! Cheers..","Thats just Ok..","You need to work Hard"];
+    var score;
+
+    if(correct==0) {
+        score=2;
+    }
+    if(correct>0 && correct <3) {
+        score=1;
+    }
+    if(correct==3) {
+        score=0;
+    }
+    document.getElementById("after-submit").style.visibility="visible";
+
+    document.getElementById("message").innerHTML=message[score];
+    document.getElementById("num-correct").innerHTML="You got " + correct + " correct.";
+    document.getElementById("pic").src = pic[score];
+    }
+    
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
